@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <head>
+            <title>js project</title>
+    </head>
+    <body>
+        
+       <script>
+           const button=document.createElement('button')
+           button.textContent='clear'
+           button.style.cssText=' height:40px; width: 80px; display: block; margin: 0 auto;'
+           document.body.appendChild(button);
+
+           const container=document.createElement('div')
+           container.classList.add('container')
+           document.body.appendChild(container);
+           
+           
+           function createGrid(x) {
+             container.style.cssText = ` grid-template-columns: repeat(${x}, auto); grid-gap: 1px; background-color: black;  display: grid; width: 560px; height: 555px; padding: 15px;margin: 0 auto;`;
+
+             for (var rows = 0; rows < x; rows++) {
+                for (var columns = 0; columns < x; columns++) {
+                     const square=document.createElement('div')
+                     square.classList.add('grid')
+                     square.style.cssText=' background-color:red; display:inline-block; outline:1px solid #000;'
+                     square.addEventListener('mouseover', function(){
+                         square.style.backgroundColor = '#ff2e63'; 
+                         })
+                               
+                     square.style.cssText=' background-color:pink; '
+                     container.appendChild(square)
+                          
+                           }}
+               
+                        }
+
+          function distroy() {
+               let grids = document.querySelectorAll(".grid");
+                    grids.forEach(function(element) {
+                    container.removeChild(element);
+                      });
+                   }
+                        
+            button.addEventListener('click', function(){
+                distroy()
+            let ask = prompt("how many squares per side ");
+            
+             createGrid(ask)
+               })
+
+           createGrid(16) 
+       </script>
+    </body>
+</html>
